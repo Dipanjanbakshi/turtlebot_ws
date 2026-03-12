@@ -1,0 +1,14 @@
+# ROS2
+build/
+install/
+log/
+
+# VSCode
+.vscode/
+
+# databases
+*.db
+
+# python
+__pycache__/
+*.pyc
