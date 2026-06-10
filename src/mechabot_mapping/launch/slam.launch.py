@@ -41,15 +41,18 @@ def generate_launch_description():
     #ros2 run nav2_map_server map_saver_cli -f map
 
     slam_toolbox = Node(
-        package="slam_toolbox",
-        executable="sync_slam_toolbox_node",
-        name="slam_toolbox",
-        output="screen",
-        parameters=[
-            slam_config,
-            {"use_sim_time": use_sim_time},
-        ],
-    )
+    package="slam_toolbox",
+    executable="sync_slam_toolbox_node",
+    name="slam_toolbox",
+    output="screen",
+    parameters=[
+        slam_config,
+        {"use_sim_time": use_sim_time},
+    ],
+    remappings=[
+        ("/odom", "/wheel_controller/odom"),
+    ],
+)
 
     nav2_lifecycle_manager = Node(
         package="nav2_lifecycle_manager",

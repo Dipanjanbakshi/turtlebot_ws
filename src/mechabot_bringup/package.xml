@@ -11,13 +11,15 @@
 
 
 
-  <depend>mechabot_controller</depend>
-  <depend>turtlebot_description</depend>
-  <depend>mechabot_mapping</depend>
-  <depend>mechabot_localization</depend>
-
   <exec_depend>rplidar_ros</exec_depend>
   <exec_depend>rviz2</exec_depend>
+  <exec_depend>mechabot_firmware</exec_depend>
+  <exec_depend>mechabot_controller</exec_depend>
+  <exec_depend>turtlebot_description</exec_depend>
+  <exec_depend>mechabot_localization</exec_depend>
+  <exec_depend>mechabot_mapping</exec_depend>
+  <exec_depend>mechabot_navigation</exec_depend>
+  <exec_depend>mechabot_scripts</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

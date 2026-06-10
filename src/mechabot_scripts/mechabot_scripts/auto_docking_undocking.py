@@ -7,6 +7,7 @@ from cv_bridge import CvBridge
 import cv2
 import numpy as np
 from tf_transformations import euler_from_quaternion
+from rclpy.qos import qos_profile_sensor_data
 import time
 
 class SimpleDockingNode(Node):
@@ -20,7 +21,8 @@ class SimpleDockingNode(Node):
         # Publishers and Subscribers
         self.vel_pub = self.create_publisher(TwistStamped, '/cmd_vel', 10)
         self.cam_sub = self.create_subscription(Image, "/camera/image_raw", self.camera_callback, 10)
-        self.imu_sub = self.create_subscription(Imu, '/imu/out', self.imu_callback, 10)
+        # self.imu_sub = self.create_subscription(Imu, '/imu/out', self.imu_callback, 10)
+        self.imu_sub = self.create_subscription(Imu, '/imu/out', self.imu_callback, qos_profile_sensor_data)
         self.lidar_sub = self.create_subscription(LaserScan, 'scan', self.lidar_callback, 10)
         
         # State variables
@@ -72,8 +74,15 @@ class SimpleDockingNode(Node):
         y = msg.orientation.y
         z = msg.orientation.z
         w = msg.orientation.w
+
+        self.yaw = math.atan2(2.0 * (w * z + x * y), 1.0 - 2.0 * (y * y + z * z))
+        self.yaw = math.degrees(self.yaw)
         
-        roll, pitch, self.yaw = euler_from_quaternion([x, y, z, w])
+        # Get yaw rate from angular velocity (z-axis)
+        # yaw_rate = msg.angular_velocity.z
+        # yaw_rate_deg = math.degrees(yaw_rate)
+        
+        # roll, pitch, self.yaw = euler_from_quaternion([x, y, z, w])
     
     def lidar_callback(self, msg):
         """Get front distance"""

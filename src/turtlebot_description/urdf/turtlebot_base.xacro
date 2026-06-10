@@ -51,9 +51,10 @@
             </material>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 0.0"/>
             <geometry>
-                <mesh filename="package://turtlebot_description/meshes/Wheel.stl" scale="0.001 0.001 0.001"/>
+                <cylinder radius="0.039" length="0.021"/>
+                <!-- <mesh filename="package://turtlebot_description/meshes/Wheel.stl" scale="0.001 0.001 0.001"/> -->
             </geometry>
             <material name="black">
                 <color rgba="0.0 0.0 0.0 1.0"/>
@@ -84,9 +85,10 @@
             </material>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 0.0"/>
             <geometry>
-                <mesh filename="package://turtlebot_description/meshes/Wheel.stl" scale="0.001 0.001 0.001"/>
+                <cylinder radius="0.039" length="0.021"/>
+                <!-- <mesh filename="package://turtlebot_description/meshes/Wheel.stl" scale="0.001 0.001 0.001"/> -->
             </geometry>
             <material name="black">
                 <color rgba="0.0 0.0 0.0 1.0"/>

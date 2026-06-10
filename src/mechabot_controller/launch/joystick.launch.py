@@ -42,6 +42,8 @@ def generate_launch_description():
             "config_topics": os.path.join(mechabot_controller_pkg, "config", "twist_mux_topics.yaml"),
             "config_joy": os.path.join(mechabot_controller_pkg, "config", "twist_mux_joy.yaml"),
             "use_sim_time": LaunchConfiguration("use_sim_time"),
+            "use_twist_stamped": "True",   # ensures consistency
+            "publish_twist_marker": "False"  # disables marker
         }.items(),
     )
 

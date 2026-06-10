@@ -12,7 +12,7 @@ def generate_launch_description():
     serial_port_arg = DeclareLaunchArgument(
         'serial_port',
         default_value='/dev/ttyUSB0',
-        description='Serial port to use for RPLIDAR',
+        description='Serial port to use for ESP32',
     )
 
     robot_description = ParameterValue(
@@ -20,9 +20,9 @@ def generate_launch_description():
             [
                 "xacro ",
                 os.path.join(
-                    get_package_share_directory("mechabot_description"),
+                    get_package_share_directory("turtlebot_description"),
                     "urdf",
-                    "mechabot.urdf.xacro",
+                    "turtlebot.urdf.xacro",
                 ),
             " is_sim:=false",
             " serial_port:=", serial_port,

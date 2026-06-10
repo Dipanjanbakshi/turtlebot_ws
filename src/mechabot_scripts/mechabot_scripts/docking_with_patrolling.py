@@ -6,6 +6,7 @@ from sensor_msgs.msg import Image, Imu, LaserScan
 from cv_bridge import CvBridge
 import cv2
 import numpy as np
+from rclpy.qos import qos_profile_sensor_data
 from tf_transformations import euler_from_quaternion, quaternion_from_euler
 from nav2_simple_commander.robot_navigator import BasicNavigator
 import time
@@ -24,7 +25,8 @@ class SimpleDockingNode(Node):
         # Publishers and Subscribers
         self.vel_pub = self.create_publisher(TwistStamped, '/cmd_vel', 10)
         self.cam_sub = self.create_subscription(Image, "/camera/image_raw", self.camera_callback, 10)
-        self.imu_sub = self.create_subscription(Imu, '/imu/out', self.imu_callback, 10)
+        # self.imu_sub = self.create_subscription(Imu, '/imu/out', self.imu_callback, 10)
+        self.imu_sub = self.create_subscription(Imu, '/imu/out', self.imu_callback, qos_profile_sensor_data)
         self.lidar_sub = self.create_subscription(LaserScan, 'scan', self.lidar_callback, 10)
         
         # State variables
@@ -260,9 +262,9 @@ class SimpleDockingNode(Node):
         
         # Set initial pose (robot starts in dock)
         self.get_logger().info("\n[SETUP] Setting initial pose")
-        self.initial_x = 1.5
-        self.initial_y = 5.18
-        self.initial_yaw = 1.57
+        self.initial_x = 0.0 #1.5
+        self.initial_y = 0.0 #5.18
+        self.initial_yaw = 0.0 #1.57
         self.set_initial_pose(self.initial_x, self.initial_y, self.initial_yaw)
         time.sleep(2)
         

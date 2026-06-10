@@ -10,7 +10,7 @@ planner_server:
       tolerance: 0.125                      # tolerance for planning if unable to reach exact pose, in meters
       downsample_costmap: false             # whether or not to downsample the map
       downsampling_factor: 1                # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
-      allow_unknown: true                   # allow traveling in unknown space
+      allow_unknown: false                   # allow traveling in unknown space
       max_iterations: 1000000               # maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
       max_on_approach_iterations: 1000      # maximum number of iterations to attempt to reach goal once in tolerance
       max_planning_time: 2.0                # max time in s for planner to plan, smooth
@@ -27,10 +27,11 @@ global_costmap:
     ros__parameters:
       update_frequency: 1.0
       publish_frequency: 1.0
+      # transform_tolerance: 1.0
       global_frame: map
       robot_base_frame: base_footprint
-      use_sim_time: true
-      footprint: "[[-0.135, -0.115], [-0.135,  0.115], [0.135,  0.115], [0.135, -0.115]]"
+      use_sim_time: false
+      footprint: "[[-0.15, -0.125], [-0.15, 0.125], [0.15, 0.125], [0.15, -0.125]]"
       resolution: 0.05
       track_unknown_space: true
       plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
@@ -54,6 +55,6 @@ global_costmap:
         map_subscribe_transient_local: True
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 15.0
-        inflation_radius: 0.20    # needs to be changed to match the robot's footprint and safety requirements
+        cost_scaling_factor: 5.0
+        inflation_radius: 0.35    # needs to be changed to match the robot's footprint and safety requirements
       always_send_full_costmap: True

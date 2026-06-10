@@ -1,6 +1,6 @@
 amcl: # Adaptive Monte Carlo Localization (AMCL) parameters
   ros__parameters:
-    use_sim_time: True
+    use_sim_time: False
     alpha1: 0.2 # Odometry drift (translation) related noise parameter
     alpha2: 0.2 # Odometry drift (rotation) related noise parameter
     alpha3: 0.2 
@@ -39,7 +39,7 @@ amcl: # Adaptive Monte Carlo Localization (AMCL) parameters
     scan_topic: scan
     set_initial_pose: true
     initial_pose:
-      x: 1.5
-      y: 5.18
+      x: 0.0 #1.5
+      y: 0.0 #5.18
       z: 0.0
-      yaw: 1.57
+      yaw: 0.0 #1.57
