@@ -291,7 +291,7 @@ class SimpleDockingNode(Node):
         ]
         
         self.follow_waypoints(waypoints)
-        time.sleep(2)
+        time.sleep(5)
         
         # Step 4: Return to pre-dock position (0.2m away from dock)
         self.get_logger().info("\n[STEP 4] Returning to pre-dock position")

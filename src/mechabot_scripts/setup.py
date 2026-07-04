@@ -33,7 +33,8 @@ setup(
             'detect_marker = mechabot_scripts.detect_marker:main',
             'auto_docking_undocking = mechabot_scripts.auto_docking_undocking:main',
             'docking_with_patrolling = mechabot_scripts.docking_with_patrolling:main',
-            'camera_driver = mechabot_scripts.camera_driver:main'
+            'camera_driver = mechabot_scripts.camera_driver:main',
+            'battery_average = mechabot_scripts.battery_average:main'
 
         ],
     },
